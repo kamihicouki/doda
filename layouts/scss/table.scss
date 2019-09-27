@@ -1,0 +1,31 @@
+body{
+    font-size: 16px;
+}
+.bg-darkgray{
+    background-color: #404040;
+}
+.darkgreen{
+    color: #8cbd23;
+}
+.line{
+    position: relative;
+    padding-left: 0.7em;
+}
+.line::after {
+    position: absolute;
+    top: 50%;
+    left:0;
+    transform:translateY(-50%);
+    content: '';
+    width: 5px;
+    height:1.5em;
+    background-color: #3a80c3;
+    border-radius: 3px;
+}
+.table-schedule th,
+.table-schedule td {
+    border: none;
+}
+.lightblue{
+    color: #3a80c3;
+}
