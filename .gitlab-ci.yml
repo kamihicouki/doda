@@ -10,6 +10,7 @@ build_hugo:
   script:
   - curl -sL https://deb.nodesource.com/setup_10.x | bash -
   - apt-get install nodejs -qqy
+  - npm i postcss-cli
   - hugo
   artifacts:
     paths:
