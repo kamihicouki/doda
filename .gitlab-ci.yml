@@ -8,6 +8,7 @@ build_hugo:
   variables:
     GIT_SUBMODULE_STRATEGY: recursive
   script:
+  # - apt-get update -qqy && apt-get install curl -qqy
   - curl -sL https://deb.nodesource.com/setup_10.x | bash -
   - apt-get install nodejs -qqy
   - hugo
