@@ -18,8 +18,6 @@ build_hugo:
 
 deploy_sakura:
   stage: deploy
-  only:
-  - master
   dependencies:
   - build_hugo
   image: alpine
