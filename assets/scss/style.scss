@@ -87,7 +87,6 @@ body{
 //headline
 
 .headline-type1 {
-    color: $main-color;
     font-size: $font-size-xxl;
 }
 
@@ -243,9 +242,6 @@ body{
 
 //font-awesome
 
-.fa-check-circle {
-    color: $main-color;
-}
 .object-fit-cover {
   object-fit: cover;
   width: 100%;
