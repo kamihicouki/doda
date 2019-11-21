@@ -2,7 +2,7 @@
     <div class="vh-100 mh-px-900 d-flex flex-column">
         <div class="flex-grow-1 position-relative d-flex">
             <div class="position-absolute h-100 w-100 main-visual main-vusual-gradiant embed-responsive embed-responsive-16by9">
-                <img class="embed-responsive-item object-fit-cover img-main-visual" src="" alt="">
+                <img class="embed-responsive-item object-fit-cover img-main-visual" src="images/{{ .Params.imageSrc }}" alt="">
             </div>
             <div class="container align-self-end align-self-lg-center">
                 <div class="row pb-4 pb-md-5 pb-lg-0">
@@ -100,23 +100,23 @@
         </div>
     {{ end }}
     {{ with .Params.向いている人向いてない人 }}
-        <div class="container py-5">
+        <div class="container pt-3 py-md-5">
             <div class="row my-3 my-lg-4 justify-content-center align-items-center">
                 <div class="col-12 col-lg-auto order-lg-1">
                     <h2 class="text-primary text-center font-weight-bolder">向いてる人、向いてない人</h2>
                 </div>
                 <div class="col-auto mt-3 my-lg-3 order-lg-0 d-none d-lg-block">
-                    <img class="icon-like-people" src="img/icon-like-people.png" alt="" width="100">
+                    <img class="icon-like-people" src="/img/icon-like-people.png" alt="" width="100">
                 </div>
                 <div class="col-auto mt-3 my-lg-3 order-lg-2 d-none d-lg-block">
-                    <img class="icon-like-unpeople" src="img/icon-unlike-people.png" alt="" width="100">
+                    <img class="icon-like-unpeople" src="/img/icon-unlike-people.png" alt="" width="100">
                 </div>
             </div>
             <div class="row my-3 my-lg-4 justify-content-center">
                 {{ range $index,$value := . }}
-                    <div class="col-12 col-lg-6 mt-3">
-                        <img class="icon-like-people mb-3 d-lg-none" src="img/icon-like-people.png" alt="" width="100">
-                        <fieldset class="fieldset-card w-100 font-weight-bolder line-lg {{ with .bgColor }}{{ . }}{{ end }}">
+                    <div class="col-12 col-lg-6 mt-3 d-flex flex-column align-items-center">
+                        <img class="icon-like-people mb-3 d-lg-none" src="/img/{{ .icon }}" alt="" width="100">
+                        <fieldset class="fieldset-card w-100 font-weight-bolder line-lg flex-grow-1 {{ with .bgColor }}{{ . }}{{ end }}">
                             <legend class="w-auto mx-auto px-5 text-nowrap">{{ .title }}</legend>
                             <ul class="">
                                 {{ range .items }}
@@ -146,7 +146,7 @@
                             data-toggle="modal"
                             data-target="#exampleModalLong">
                             <div class="embed-responsive embed-responsive-1by1 rounded-circle shadow-sm mb-4">
-                                <img src="img/saito.png" class="embed-responsive-item object-fit-cover member-img_">
+                                <img src="/img/saito.png" class="embed-responsive-item object-fit-cover member-img_">
                             </div>
                             <h6 class="">営業</h6>
                             <h6 class="">斎藤光男</h6>
