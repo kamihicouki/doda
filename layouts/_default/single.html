@@ -64,8 +64,8 @@
                 <div class="row">
                     <div class="col-auto mx-auto">
                         {{ range . }}
-                            <h4 class="text-primary line-lg font-weight-bolder">
-                                <i class="far fa-check-circle fa-lg mr-4 text-primary"></i>{{ .title | safeHTML }}</h4>
+                            <h4 class="text-primary line-lg font-weight-bolder position-relative pl-5">
+                                <i class="far fa-check-circle fa-lg text-primary position-absolute left-0 top-em-0_35"></i>{{ .title | safeHTML }}</h4>
                         {{ end }}
                     </div>
                 </div>

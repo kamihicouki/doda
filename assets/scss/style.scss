@@ -222,7 +222,6 @@ body{
   -webkit-transform: translateX(-50%) !important;
           transform: translateX(-50%) !important;
 }
-
 .object-fit-cover {
   object-fit: cover;
   width: 100%;
@@ -379,4 +378,10 @@ body{
 }
 .border-medium {
   border-width: medium !important;
+}
+.left-0 {
+  left: 0;
+}
+.top-em-0_35 {
+  top: .35em;
 }
