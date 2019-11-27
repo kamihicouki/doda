@@ -38,7 +38,7 @@ deploy_sakura:
   - apk add --quiet lftp
   - lftp -c "set ftp:ssl-allow yes; set ftp:use-mdtm no; set ftp:timezone $TIMEZONE; open -u $USERNAME,$PASSWORD -p $PORT $HOST; mirror --reverse --parallel=10 --ignore-time --only-newer $SRC_PATH $DEST_PATH"
 
-deploy_cp-agency:
+deploy_cp-agency-dev:
   stage: deploy
   dependencies:
   - build_hugo
@@ -58,7 +58,7 @@ deploy_cp-agency:
   - apk add --quiet lftp
   - lftp -c "set ftp:ssl-allow yes; set ftp:use-mdtm no; set ftp:timezone $TIMEZONE; open -u $USERNAME,$PASSWORD -p $PORT $HOST; mirror --reverse --parallel=10 --ignore-time --only-newer $SRC_PATH $DEST_PATH"
 
-deploy_cp-agency:
+deploy_cp-agency-master:
   only:
   - master
   stage: deploy
