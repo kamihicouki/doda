@@ -10,7 +10,7 @@
                         {{ if .Params.logo.imgSrc }}
                           <img class="img-fluid" src="" alt="{{ .Title }}">
                         {{ else }}
-                          <h3 class="text-primary font-weight-bolder">{{ .Title }}</h3>
+                          <h1 class="text-primary font-weight-bolder">{{ .Title }}</h1>
                         {{ end }}
                         <p class="lead my-3 my-md-5 my-lg-4 ">{{ with .Params.キャッチコピー }}{{ . }}{{ end }}</p>
                         <button type="button" class="btn btn-lg rounded-pill text-white bg-primary px-4">メールに返信する</button>
@@ -22,9 +22,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-white text-center">
-                        {{ with .Params.キャッチコピー }}
-                            <h3 class="font-headline my-2 my-lg-4 font-weight-bolder">{{ . }}</h3>
-                            <!-- <p class="my-2 my-lg-4 line-lg">私たちは、<br>世界的に不足している即戦力エンジニアを未経験から育成して<br>技術力の力で、世の中を変える。</p> -->
+                        {{ with .Params.キャッチフレーズ }}
+                            <h3 class="font-headline my-2 my-lg-4 font-weight-bolder line-sm">{{ . | markdownify }}</h3>
                         {{ end }}
                     </div>
                 </div>
