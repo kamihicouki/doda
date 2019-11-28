@@ -64,8 +64,10 @@
                 <div class="row">
                     <div class="col-auto mx-auto">
                         {{ range . }}
-                            <h4 class="text-primary line-lg font-weight-bolder position-relative pl-5">
-                                <i class="far fa-check-circle fa-lg text-primary position-absolute left-0 top-em-0_35"></i>{{ .title | safeHTML }}</h4>
+                            <h4 class="text-primary line-md font-weight-bolder position-relative text-indent">
+                                <i class="far fa-check-circle fa-lg text-primary align-middle"></i>
+                                <span class="align-middle">{{ .title | safeHTML }}</span>
+                            </h4>
                         {{ end }}
                     </div>
                 </div>
@@ -83,9 +85,9 @@
                                         {{ .body | safeHTML }}
                                     </p>
                                 </div>
-                                <div class="pickup-item__bottom d-flex">
+                                <div class="pickup-item__bottom d-flex w-100">
                                     <div class="col-4 col-lg-3 card-work-img text-center">
-                                      <div class="embed-responsive embed-responsive-1by1 rounded-circle border border-primary border-medium shadow pickup-img">
+                                      <div class="embed-responsive embed-responsive-1by1 rounded-circle border border-primary border-medium shadow pickup-img bg-white">
                                         <img class="embed-responsive-item object-fit-cover" src="images/{{ .image }}" >
                                       </div>
                                     </div>
