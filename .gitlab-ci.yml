@@ -16,24 +16,44 @@ build_hugo:
     paths:
     - public
 
-deploy_sakura:
+deploy_cp-agency-dev:
   stage: deploy
-  only:
-  - master
   dependencies:
   - build_hugo
   image: alpine
   environment:
     name: preview
-    url: http://chees.sakura.ne.jp/G2r4JYzhw1N1CjKw
+    url: http://cp-agency.co.jp/test
   variables:
-    HOST: chees.sakura.ne.jp
+    HOST: ftp.lolipop.jp
     PORT: '21'
-    USERNAME: chees
-    PASSWORD: ff8yyzaez4
+    USERNAME: candypop.jp-cp-agency
+    PASSWORD: L4Y4xw5ffTEjzq5
     TIMEZONE: 'Asia/Tokyo'
     SRC_PATH: public
-    DEST_PATH: /home/chees/www/G2r4JYzhw1N1CjKw
+    DEST_PATH: /test
+  script:
+  - apk add --quiet lftp
+  - lftp -c "set ftp:ssl-allow yes; set ftp:use-mdtm no; set ftp:timezone $TIMEZONE; open -u $USERNAME,$PASSWORD -p $PORT $HOST; mirror --reverse --parallel=10 --only-newer $SRC_PATH $DEST_PATH"
+
+deploy_cp-agency-master:
+  only:
+  - master
+  stage: deploy
+  dependencies:
+  - build_hugo
+  image: alpine
+  environment:
+    name: preview
+    url: http://cp-agency.co.jp/lp
+  variables:
+    HOST: ftp.lolipop.jp
+    PORT: '21'
+    USERNAME: candypop.jp-cp-agency
+    PASSWORD: L4Y4xw5ffTEjzq5
+    TIMEZONE: 'Asia/Tokyo'
+    SRC_PATH: public
+    DEST_PATH: /lp
   script:
   - apk add --quiet lftp
   - lftp -c "set ftp:ssl-allow yes; set ftp:use-mdtm no; set ftp:timezone $TIMEZONE; open -u $USERNAME,$PASSWORD -p $PORT $HOST; mirror --reverse --parallel=10 --ignore-time --only-newer $SRC_PATH $DEST_PATH"
