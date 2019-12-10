@@ -1,0 +1,5 @@
+AuthUserFile /home/sites/lolipop.jp/users/cp-agency/web/test/.htpasswd
+AuthGroupFile /dev/null
+AuthName ""
+AuthType Basic
+require valid-user

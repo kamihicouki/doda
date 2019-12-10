@@ -3,57 +3,59 @@ stages:
 - deploy
 
 build_hugo:
-  stage: build
-  image: monachus/hugo
+  stage:                    build
+  image:                    monachus/hugo
   variables:
     GIT_SUBMODULE_STRATEGY: recursive
   script:
   - curl -sL https://deb.nodesource.com/setup_10.x | bash -
   - apt-get install nodejs -qqy
-  - npm i postcss-cli
+  - npm install --quiet postcss-cli
   - hugo
   artifacts:
     paths:
     - public
 
-deploy_cp-agency-dev:
-  stage: deploy
+deploy-develop:
+  except:
+  - master
+  stage:                    deploy
   dependencies:
   - build_hugo
-  image: alpine
+  image:                    alpine
   environment:
-    name: preview
-    url: http://cp-agency.co.jp/test
+    name:                   preview
+    url:                    http://cp-agency.co.jp/test
   variables:
-    HOST: ftp.lolipop.jp
-    PORT: '21'
-    USERNAME: candypop.jp-cp-agency
-    PASSWORD: L4Y4xw5ffTEjzq5
-    TIMEZONE: 'Asia/Tokyo'
-    SRC_PATH: public
-    DEST_PATH: /test
+    HOST:                   ftp.lolipop.jp
+    PORT:                   '21'
+    USERNAME:               candypop.jp-cp-agency
+    PASSWORD:               L4Y4xw5ffTEjzq5
+    TIMEZONE:               'Asia/Tokyo'
+    SRC_PATH:               public
+    DEST_PATH:              /test
   script:
   - apk add --quiet lftp
   - lftp -c "set ftp:ssl-allow yes; set ftp:use-mdtm no; set ftp:timezone $TIMEZONE; open -u $USERNAME,$PASSWORD -p $PORT $HOST; mirror --reverse --parallel=10 --only-newer $SRC_PATH $DEST_PATH"
 
-deploy_cp-agency-master:
+deploy-master:
   only:
   - master
-  stage: deploy
+  stage:                    deploy
   dependencies:
   - build_hugo
-  image: alpine
+  image:                    alpine
   environment:
-    name: preview
-    url: http://cp-agency.co.jp/lp
+    name:                   production
+    url:                    http://cp-agency.co.jp/lp
   variables:
-    HOST: ftp.lolipop.jp
-    PORT: '21'
-    USERNAME: candypop.jp-cp-agency
-    PASSWORD: L4Y4xw5ffTEjzq5
-    TIMEZONE: 'Asia/Tokyo'
-    SRC_PATH: public
-    DEST_PATH: /lp
+    HOST:                   ftp.lolipop.jp
+    PORT:                   '21'
+    USERNAME:               candypop.jp-cp-agency
+    PASSWORD:               L4Y4xw5ffTEjzq5
+    TIMEZONE:               'Asia/Tokyo'
+    SRC_PATH:               public
+    DEST_PATH:              /lp
   script:
   - apk add --quiet lftp
   - lftp -c "set ftp:ssl-allow yes; set ftp:use-mdtm no; set ftp:timezone $TIMEZONE; open -u $USERNAME,$PASSWORD -p $PORT $HOST; mirror --reverse --parallel=10 --ignore-time --only-newer $SRC_PATH $DEST_PATH"
