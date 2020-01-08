@@ -19,6 +19,7 @@ build_hugo:
 deploy-develop:
   except:
   - master
+  - forestry.io
   stage:                    deploy
   dependencies:
   - build_hugo
